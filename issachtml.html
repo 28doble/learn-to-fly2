@@ -5,6 +5,32 @@
 		<title>.</title>
 		<!-- Add Ruffle Flash emulator -->
 		<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+		<script>
+			// Save data to localStorage
+			function saveData(key, value) {
+				localStorage.setItem(key, JSON.stringify(value));
+			}
+
+			// Load data from localStorage
+			function loadData(key) {
+				const data = localStorage.getItem(key);
+				return data ? JSON.parse(data) : null;
+			}
+
+			// Example usage
+			document.addEventListener('DOMContentLoaded', () => {
+				// Load saved data
+				const savedData = loadData('issacGameProgress');
+				if (savedData) {
+					console.log('Loaded data:', savedData);
+				} else {
+					console.log('No saved data found.');
+				}
+
+				// Save example data
+				saveData('issacGameProgress', { level: 2, score: 200 });
+			});
+		</script>
 	</head>
 	<body style="background-color:rgb(62, 62, 62);" class='back'>
 		<center>

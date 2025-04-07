@@ -4,6 +4,32 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>.</title>
+	<script>
+		// Save data to localStorage
+		function saveData(key, value) {
+			localStorage.setItem(key, JSON.stringify(value));
+		}
+
+		// Load data from localStorage
+		function loadData(key) {
+			const data = localStorage.getItem(key);
+			return data ? JSON.parse(data) : null;
+		}
+
+		// Example usage
+		document.addEventListener('DOMContentLoaded', () => {
+			// Load saved data
+			const savedData = loadData('gameProgress');
+			if (savedData) {
+				console.log('Loaded data:', savedData);
+			} else {
+				console.log('No saved data found.');
+			}
+
+			// Save example data
+			saveData('gameProgress', { level: 1, score: 100 });
+		});
+	</script>
 </head>
 <body>
 	<body style="background-color:rgb(255, 255, 255);" class='back'>
