@@ -30,12 +30,25 @@
 				// Save example data
 				saveData('issacGameProgress', { level: 2, score: 200 });
 			});
+
+			// Function to toggle fullscreen mode
+			function toggleFullscreen() {
+				const elem = document.documentElement;
+				if (!document.fullscreenElement) {
+					elem.requestFullscreen().catch(err => {
+						console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+					});
+				} else {
+					document.exitFullscreen();
+				}
+			}
 		</script>
 	</head>
 	<body style="background-color:rgb(62, 62, 62);" class='back'>
 		<center>
 			<!-- Keep the existing SWF embed - Ruffle will automatically handle it -->
-			<embed src="assets/issac.swf" width="1000px" height="800px">
+			<embed src="assets/issac.swf" width="1000px" height="750px">
+			<button onclick="toggleFullscreen()" style="margin-top: 10px;">Fullscreen</button>
 		</center>
 	</body>
 </html>
